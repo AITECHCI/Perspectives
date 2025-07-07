@@ -25,12 +25,14 @@ export default function DescriptionAllSpaces() {
                 </div>
                 <div className="mt-6 md:mt-0 flex flex-col justify-center">
                     <p className="mb-6 font-light text-justify text-gray-600 md:text-lg dark:text-gray-300 leading-relaxed transition-colors duration-300">
-                        Nous proposons des services financiers diversifiés, adaptés aux besoins des particuliers et des entreprises. 
-                        Notre expertise couvre des domaines tels que la gestion de patrimoine, le conseil en investissement, 
-                        ainsi que l&apos;analyse financière et la planification budgétaire. Nous nous engageons à fournir des solutions 
-                        personnalisées qui maximisent le rendement de vos investissements tout en minimisant les risques associés. 
-                        Notre équipe d&apos;experts financiers vous accompagne à chaque étape, vous permettant de prendre des décisions 
-                        éclairées pour atteindre vos objectifs financiers à court et long terme.
+                    Dans la volonté constante de vous servir au mieux, nous vous proposons une large gamme de services
+                    financiers. Vous trouverez ainsi, dans notre catalogue d’offres, la gestion de patrimoine, l’analyse
+                    financière et la planification budgétaire. Nous y incluons également des services de conseil en
+                    investissement, conçus pour vous aider à prendre des décisions éclairées et à limiter au mieux les
+                    risques inhérents à cet exercice. Enfin, nos offres d’accompagnement sur mesure vous permettent d’être
+                    soutenu à chaque étape, tant dans la création de votre entreprise que dans la gestion efficiente de ses
+                    ressources, toujours en conformité avec vos besoins et vos objectifs. Nous mettons notre expertise à
+                    votre service, au service de vos ambitions
                     </p>
                  
                 </div>

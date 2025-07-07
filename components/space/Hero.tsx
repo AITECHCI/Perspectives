@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/card";
 
 const images=[
-    "/images/immobilier/1.jpg",
+    "/images/immobilier/Soleil 1.0.3.png",
  
    
     
@@ -61,7 +61,10 @@ export default function Hero(){
        
         {/* Ajout d'un paragraphe pour correspondre au style du second code */}
         <p className="mb-8 mt-24 font-normal text-2xl sm:text-2xl text-justify">
-         Nous proposons une gamme complète de services en immobilier et logistique : intermédiation pour l’achat et la vente, location de biens meublés ou non, gestion immobilière, conseil en projets de construction, et fourniture de matériel. Nos solutions incluent également la location de hangars, plateformes, et entrepôts, adaptées à vos besoins logistiques.
+        Vous choisissez
+        l’emplacement, le style et le niveau de confort.
+        Nous vous proposons des biens meublés et non,
+        prêts à vous accueillir…
         </p>
       </div>
     </div>

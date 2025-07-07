@@ -7,18 +7,38 @@ export default async function ItemSpace({
 }: {
   params: { id: string };
 }) {
-  const group = espaces.find((espace) => {
-    if (espace.items) {
-      return espace.items.find((espac) => espac.id == params.id);
-    }
-    return espace.id == params.id;
-  });
+  // Nouvelle logique robuste pour tous les cas, typage any explicite
+  const item: any = espaces
+    .flatMap((g) =>
+      g.items
+        ? g.items.map((i) => ({
+            ...i,
+            options: i.options ?? [],
+            tarifs: i.tarifs ?? [],
+            _group: {
+              images: g.images,
+              description: g.description,
+              groupOptions: g.options ?? { title: '', items: [] },
+              groupItems: g.items ?? [],
+            },
+          }))
+        : [
+            {
+              ...g,
+              options: g.options ?? [],
+              tarifs: g.tarifs ?? [],
+              _group: {
+                images: g.images,
+                description: g.description,
+                groupOptions: g.options ?? { title: '', items: [] },
+                groupItems: g.items ?? [],
+              },
+            },
+          ]
+    )
+    .find((i: any) => i.id === params.id);
 
-  const item = group
-    ? group.items
-      ? group.items.find((espac) => espac.id == params.id)
-      : group
-    : null;
+  const group: any = item?._group || null;
 
   return (
     <div>

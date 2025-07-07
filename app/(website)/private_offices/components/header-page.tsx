@@ -8,11 +8,12 @@ export default function HeaderPage() {
   return (
     <>
      <section className="relative p-4 ml-10 ">
-  <div className="relative h-[375px] max-w-[1400px] rounded-tr-[40px] rounded-bl-[40px] overflow-hidden">
+  <div className="container h-[375px] max-w-[1400px] relative rounded-tr-[40px] rounded-bl-[40px] overflow-hidden">
     <div className="relative z-[2] flex flex-col md:flex-row md:gap-x-8 justify-between h-[320px] py-6 px-4 sm:py-8 lg:px-8">
            <div className="max-w-screen-sm text-white text-center md:text-left">
              <h2 className=" text-xl sm:text-2xl font-saudagar md:text-3xl lg:text-4xl tracking-tight font-semibold mt-20">
-              Confiez vos livraisons de sable, ciment, gravier et autres matériaux à nos équipes expérimentées.</h2>
+             Maîtriser les flux, garantir les délais, sécuriser chaque étape…
+             </h2>
             </div>
     </div>
 

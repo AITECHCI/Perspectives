@@ -165,14 +165,7 @@ export default function Valeurs() {
                         <span className="w-6 h-6 mr-2 bg-lime-400 rounded flex items-center justify-center">✔</span>
                         <span className="font-semibold">Performance</span>
                     </li>
-                    <li className="flex items-center">
-                        <span className="w-6 h-6 mr-2 bg-orange-400 rounded flex items-center justify-center">✔</span>
-                        <span className="font-semibold">Collaboration</span>
-                    </li>
-                    <li className="flex items-center">
-                        <span className="w-6 h-6 mr-2 bg-orange-400 rounded flex items-center justify-center">✔</span>
-                        <span className="font-semibold">Responsabilité</span>
-                    </li>
+                 
                 </ul>
                 <p className="mt-4">
                     <span className="font-semibold">Respect, Discipline et Performance :</span> les piliers de notre démarche.

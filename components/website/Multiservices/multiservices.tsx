@@ -50,10 +50,16 @@ const Multiservices = () => {
             variants={textVariants}
           >
             <h2 className="text-[#8E421C] text-4xl font-bold mb-4">
-              Dans le domaine financier
+            Dans la Finance,
             </h2>
             <p className="text-lg font-medium tracking-wider mb-6 text-justify text-gray-600 md:text-lg dark:text-gray-300 transition-colors duration-300 leading-loose">
-              Nous accompagnons particuliers et entreprises dans la gestion, l&apos;optimisation et la valorisation de leur patrimoine, en leur proposant des solutions sur mesure, pensées pour produire des résultats concrets, sécurisés et durables.
+            Le pôle financier de Perspectives accompagne particuliers et entreprises dans la gestion, l&apos;optimisation
+            et la sécurisation de leurs ressources. Il intervient sur des missions variées : gestion de patrimoine,
+            planification budgétaire, conseils en investissement, analyse financière et création d&apos;entreprise. Chaque
+            service repose sur une approche rigoureuse et pragmatique, appuyée par des outils d&apos;aide à la décision,
+            une lecture éclairée du contexte économique et une compréhension des objectifs individuels. L’objectif :
+            permettre à chaque client d&apos;agir avec clarté et de bâtir une base financière solide, à court comme à long
+            terme.
             </p>
           </motion.div>
         </motion.div>
@@ -77,10 +83,16 @@ const Multiservices = () => {
             variants={textVariants}
           >
             <h2 className="text-[#8E421C] text-4xl font-bold mb-4">
-              Le pôle immobilier
+            Dans l&apos;immobilier,
             </h2>
-            <p className="text-lg font-medium tracking-wider mb-16 text-justify text-gray-600 md:text-lg dark:text-gray-300 transition-colors duration-300 h-32 leading-loose">
-              Se concentre sur la location et la construction d&apos;appartements de haut standing. Chaque bien est sélectionné ou conçu avec une attention particulière portée aux détails, à l&apos;emplacement et aux finitions.
+            <p className="text-lg font-medium tracking-wider mb-6 text-justify text-gray-600 md:text-lg dark:text-gray-300 transition-colors duration-300 leading-loose">
+            Perspectives se spécialise dans l&apos;immobilier haut de gamme, avec une sélection rigoureuse d&apos;appartements à louer,
+            pensés pour une clientèle exigeante, en quête de confort et de discrétion. Chaque bien se distingue par la qualité
+            des finitions, la justesse de l&apos;aménagement et l&apos;emplacement stratégique En parallèle, l&apos;entreprise développe une
+            activité de promotion immobilière selon les mêmes standards élevés, de la conception à la réalisation. Les projets
+            visent à créer des résidences uniques, durables et bien intégrées à leur environnement, offrant ainsi des espaces de
+            vie d&apos;exception à forte valeur ajoutée.
+
             </p>
           </motion.div>
           <motion.div
@@ -132,11 +144,19 @@ const Multiservices = () => {
             variants={textVariants}
           >
             <h2 className="text-[#8E421C] text-4xl font-bold mb-4">
-              Transit et Transport
+            Dans Le Transit et le transport,
             </h2>
             <p className="text-lg font-medium tracking-wider mb-6 text-justify text-gray-600 md:text-lg dark:text-gray-300 transition-colors duration-300 leading-loose">
-              Nous mettons en place une logistique efficace et fiable, adaptée aux exigences de rapidité et de sécurité du marché actuel. Nous assurons le déplacement des marchandises et équipements dans des conditions optimales, grâce à une organisation rigoureuse.
+             
+            Perspectives propose un service de transport spécialisé dans l&apos;acheminement de matériaux essentiels à la
+            construction (sable, ciment, granite, graviers, etc.), avec des livraisons fiables et ponctuelles grâce à une logistique
+            performante. Chaque commande est gérée avec rigueur et traçabilité. L&apos;entreprise offre également un service de
+            transit complet, couvrant toutes les démarches d&apos;importation, de la douane à la livraison finale. Elle accompagne
+            aussi bien les envois ponctuels que les flux réguliers, avec professionnalisme, réactivité et transparence, pour
+            garantir la fluidité des projets.
+
             </p>
+           
           </motion.div>
         </motion.div>
       </section>
@@ -175,11 +195,20 @@ const Multiservices = () => {
             variants={textVariants}
           >
             <h2 className="text-[#8E421C] text-4xl font-bold mb-4">
-              Le commerce général
+            Dans le Commerce générale
             </h2>
-            <p className="text-lg font-medium tracking-wider text-gray-600 md:text-lg dark:text-gray-300 transition-colors duration-300 leading-loose max-w-2xl">
-              Repose sur la distribution d&apos;appareils électroménagers de qualité, durables, performants et adaptés à un style de vie élevé.
-            </p>
+            <div className="space-y-4 sm:space-y-6 w-full max-w-7xl">
+              <p className="text-lg font-medium tracking-wider mb-6 text-justify text-gray-600 md:text-lg dark:text-gray-300 transition-colors duration-300 leading-loose">
+              Perspectives enrichit son offre avec une sélection d&apos;appareils électroménagers pensés pour améliorer le confort
+              quotidien : réfrigérateurs, cuisinières, climatiseurs, lave-linges, etc. Chaque produit est choisi pour sa fiabilité, son
+              efficacité énergétique et son bon rapport qualité-prix. À travers son service de Commerce Général, l&apos;entreprise
+              propose un accès simple à des équipements durables et fonctionnels, issus de marques reconnues. Elle assure
+              également une distribution efficace et un service après-vente réactif, dans une logique de continuité et de qualité,
+              fidèle à l&apos;ensemble de ses prestations.
+
+              </p>
+           
+            </div>
           </motion.div>
         </motion.div>
       </section>

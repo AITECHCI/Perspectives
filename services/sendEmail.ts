@@ -41,10 +41,10 @@ export async function sendEmail({
     console.log("Reply-To address:", userEmail);
 
     const data = await resend.emails.send({
-      from: `${userName} <no-reply@perspectivesci.com>`, // Affiche "Kouakou Alexis" + domaine vérifié
+      from: "Perspectives CI <no-reply@perspectivesci.com>", // Affiche toujours le nom de l'entreprise
       to: toArray,
       subject,
-      reply_to: userEmail, // Correction : utiliser reply_to au lieu de replyTo
+      reply_to: userEmail, // Les réponses vont à l'email du client
       react,
       
     });

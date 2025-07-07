@@ -51,10 +51,18 @@ export interface FormulaEmailData {
   clientName: string;
   clientEmail: string;
   clientPhone: string;
-  roomType: string;
+  roomType:string;
   dates: string;
-  guests: string;
+  guests:number;
   totalPrice:number;
- 
- 
+}
+
+export interface SalleEmailData {
+    clientName: string;
+    clientEmail: string;
+    clientPhone: string;
+    tarif: string;
+    dates: string;
+    nombreParticipants?: number;
+    nomEvenement?: string;
 }

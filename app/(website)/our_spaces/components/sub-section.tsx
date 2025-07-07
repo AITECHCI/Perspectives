@@ -65,24 +65,7 @@ const cardData = [
     description:
       "Investissements stratégiques sur les marchés financiers pour maximiser le rendement et gérer les risques.",
   },
-  {
-    icon: "🌍",
-    title: "Finance internationale",
-    description:
-      "Gestion des flux financiers internationaux pour stimuler la compétitivité et favoriser la stabilité économique mondiale.",
-  },
-  {
-    icon: "🏦",
-    title: "Finance bancaire",
-    description:
-      "Gestion des services financiers fournis par les banques, incluant les prêts, l'épargne et les investissements, pour soutenir l'économie.",
-  },
-  {
-    icon: "📉",
-    title: "Finance d'investissement",
-    description:
-      "Gestion de portefeuilles d'actifs financiers pour optimiser la rentabilité sur le long terme.",
-  },
+ 
 ];
 
 const gridSquares = [

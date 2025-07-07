@@ -3,7 +3,7 @@ export const offres = [
   {
     id: "domiciliation_virtuelle_entreprise",
     title: "Finance",
-    subdescription: "Vos Finances, Notre Expertise : Croissance Assurée !",
+    subdescription: "Notre expertise au service de vos ambitions...",
     description: [
       "Dans le cadre de l'immatriculation de votre entreprise au CEPICI pour obtenir une autorisation légale d'exercer votre activité en Côte-d'Ivoire il vous sera nécessaire de disposer d'un siège-social et de vous rattacher par la suite à un centre d'impôts ivoirien.",
       "Perspectives  met à votre disposition une adresse géographique. Grâce à la souscription d'un abonnement annuel vous obtenez un contrat qui vous permettra de compléter votre dossier auprès du notaire, de l'avocat ou l'expert en charge de faire la constitution de votre société à Abidjan.",
@@ -64,7 +64,7 @@ export const offres = [
     id: "domiciliation_physique_entreprise",
     title: "Immobilier",
     subdescription:
-      "Profitez du confort et de l'ambiance dynamisante de notre espace .",
+      "Habiter l’excellence, investir dans la valeur...",
     description: [
       "Dans un environnement où le coût de l'immobilier ne fait que s'accroître, il est important en tant qu'investisseur en côte d'ivoire, entrepreneur ou entreprises internationales de trouver des stratégies pour installer l'entreprise à moindre coût.",
       "Perspectives  vous aide à atteindre cet objectif en minimisant vos coûts. Offrez-vous le luxe de bénéficier d'un bureau élégant à Abidjan au sein d'un espace partagé avec une communauté (locaux, expatriés, repats) et bénéficiez d'un large réseau.",
@@ -137,7 +137,7 @@ export const offres = [
   {
     id: "location_occasionnelle_de_bureaux_meubles",
     title: " Transit-Transport",
-    subdescription: "La force du transport, la fiabilité en plus!",
+    subdescription: "Maîtriser les flux, garantir les délais, sécuriser chaque étape...",
     description: [
       "Conscient du fait que toutes les entreprises n'ont pas les mêmes besoins et le même budget nous donnons la possibilité à chacun de pouvoir évoluer à son rythme. A L'heure, à la journée, à la semaine ou au mois venez comme vous êtes.",
       "A chaque bureau son ambiance et son authenticité, choisissez qui vous va à l'instant en fonction de votre humeur pour votre bien être et une meilleure productivité. ",
@@ -183,7 +183,7 @@ export const offres = [
     id: "location_salle_de_reunion",
     title: "Commerce generale",
     subdescription:
-      "Le commerce à portée de main.",
+      "Tout l'électroménager dont vous avez besoin à portée de clic…",
     description: [
       "Aménagées de manière ergonomique et confortable, notre salle de réunion avec sa capacité de 10 personnes minimum est entièrement équipée pour accueillir vos rencontres professionnelles abidjanaises.",
       "Grâce à son accessibilité c'est l'emplacement rêvé pour organiser vos réunions, vos formations, vos masterclass. Vos convives, collaborateurs, clients ne pourraient être que ravis de cet endroit que nous nommons affectueusement le labo.",

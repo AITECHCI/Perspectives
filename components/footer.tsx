@@ -129,7 +129,8 @@ export default function Footer() {
                   </a>
                 </p>
                 <p>
-                  <span className="font-medium">Adresse:</span> Marcory Zone 4, Immeuble Diamond Ivoire, Abidjan, Côte d&apos;Ivoire
+                  <span className="font-medium">Adresse:</span> Marcory Boulevard FHB ex VGE Immeuble Diamond Ivoire,
+                  Abidjan, Côte d&apos;Ivoire 
                 </p>
               </div>
             </div>

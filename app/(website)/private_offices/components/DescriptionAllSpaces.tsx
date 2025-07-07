@@ -74,10 +74,17 @@ export default function DescriptionAllSpaces() {
           className="mt-8 md:mt-0 flex flex-col justify-center w-full md:w-1/2"
         >
           <p className="mb-6 text-justify text-gray-600 md:text-lg leading-relaxed">
-            Pour vos livraisons et transferts de sable, de ciment, de gravier et bien d&apos;autres matériaux, faites 
-            confiance à nos équipes qualifiées, expérimentées et réactives. Nous assurons chaque déplacement avec fiabilité, grâce à une logistique maîtrisée et 
-            un service rigoureux, pensé pour répondre à vos besoins dans les meilleurs délais.
+          Perspectives assure le transport de matériaux essentiels
+          (sable, ciment, gravier, etc.) avec des équipes
+          expérimentées et une logistique rigoureuse, garantissant
+          des livraisons fiables, adaptées aux contraintes de délais,
+          de volumes et de terrain.
+          Le pôle intègre également un service de transit, prenant en charge l’ensemble du processus d’acheminement, de
+          l’origine à la destination finale. De la gestion administrative aux formalités douanières, chaque étape est suivie
+          avec précision pour accompagner efficacement les opérations, qu’elles soient locales ou transfrontalières.
+
           </p>
+        
         </motion.div>
       </div>
 
@@ -89,7 +96,7 @@ export default function DescriptionAllSpaces() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-12 text-3xl md:text-4xl font-saudagar tracking-tight text-gray-900"
         >
-          Transit
+          Transport
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 max-w-7xl mx-auto">
           {transit.map((item, index) => (
@@ -128,7 +135,7 @@ export default function DescriptionAllSpaces() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-12 text-3xl md:text-4xl font-saudagar tracking-tight text-gray-900"
         >
-          Transport
+          Transit
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto">
           {transport.map((item, index) => (

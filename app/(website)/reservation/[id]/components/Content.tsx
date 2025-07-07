@@ -21,6 +21,7 @@ import { espaces } from "@/config/data";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface IFormInput {
   name: string;
@@ -28,6 +29,8 @@ interface IFormInput {
   phone: string;
   tarif: string;
   dates: Date[];
+  nombreParticipants?: number;
+  nomEvenement?: string;
 }
 
 export default function Content({ group, space }: { group: any; space: any }) {
@@ -37,20 +40,32 @@ export default function Content({ group, space }: { group: any; space: any }) {
   const [totalAmount, setTotalAmount] = useState<number>(0);
   const [data, setData] = useState<any>();
   const [isMonthlyTarif, setIsMonthlyTarif] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    reset,
   } = useForm<IFormInput>({
     mode: "onChange",
   });
 
-  const selectedSpace =
-    espaces
-      .find((e) => e.id === group.id)
-      ?.items?.find((i) => i.id === space.id) || space;
-  const hasTarifs = selectedSpace.tarifs && selectedSpace.tarifs.length > 0;
+  let selectedSpace = space;
+  if (group && group.items && space && space.id) {
+    // Cas classique : espace avec sous-items
+    const foundGroup = espaces.find((e) => e.id === group.id);
+    const foundItem = foundGroup?.items?.find((i) => i.id === space.id);
+    if (foundItem) selectedSpace = foundItem;
+  } else if (group && group.id) {
+    // Cas où l'espace est le groupe lui-même (ex: salle de réunion)
+    const foundGroup = espaces.find((e) => e.id === group.id);
+    if (foundGroup) selectedSpace = foundGroup;
+  }
+  const hasTarifs = selectedSpace && selectedSpace.tarifs && selectedSpace.tarifs.length > 0;
+
+  // Détection salle de conférence
+  const isConferenceRoom = space?.id === "meeting_room";
 
   // Fonction pour calculer le montant total
   const calculateAmount = (tarifString: string, dates: Date[]): number => {
@@ -83,49 +98,39 @@ export default function Content({ group, space }: { group: any; space: any }) {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     setData(data);
-    if (hasTarifs) {
-      const amount = calculateAmount(selectedTarif, dates);
-      open({
-        amount,
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-      });
-    } else {
-      try {
-        const response = await fetch("/api/send-email", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+    try {
+      const response = await fetch("/api/send-email/sallereservation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subject: "Demande de réservation PersPectives",
+          to: [data.email, "infos@perspectivesci.com"],
+          emailData: {
+            clientName: data.name,
+            clientEmail: data.email,
+            clientPhone: data.phone,
+            tarif: selectedTarif,
+            dates: formatDates(dates),
+            ...(isConferenceRoom && {
+              nombreParticipants: data.nombreParticipants,
+              nomEvenement: data.nomEvenement,
+            }),
           },
-          body: JSON.stringify({
-            subject: "Demande de réservation PersPectives",
-            to: [data.email, "info@perspectivesci.com"],
-            emailData: {
-              coworkingName: space.title,
-              category: group.title,
-              location: space.adresse,
-              clientName: data.name,
-              clientEmail: data.email,
-              clientPhone: data.phone,
-              reservationPrice: 5000,
-              date: formatDates(dates),
-              priceType: selectedTarif,
-              PerspectivesImage: space.images[0].src,
-            },
-          }),
-        });
-        if (!response.ok) {
-          throw new Error("Failed to send email");
-        }
-        router.push(
-          `/recap?type=reservation&name=${encodeURIComponent(data.name)}&email=${encodeURIComponent(data.email)}&phone=${encodeURIComponent(data.phone)}&groupId=${group.id}&spaceId=${space.id}&dates=${formatDates(dates)}&tarif=${encodeURIComponent(selectedTarif)}`
-        );
-      } catch (error) {
-        toast("Erreur", {
-          description: "Une erreur est survenue lors de l'envoi de la demande",
-        });
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to send email");
       }
+      setShowSuccess(true);
+      reset();
+      setDates([]);
+      setSelectedTarif("");
+    } catch (error) {
+      toast("Erreur", {
+        description: "Une erreur est survenue lors de l'envoi de la demande",
+      });
     }
   };
 
@@ -144,59 +149,6 @@ export default function Content({ group, space }: { group: any; space: any }) {
     }
   }, [selectedTarif, dates]);
 
-  useEffect(() => {
-    if (paymentStatus === "success") {
-      fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          subject: "Facture PERSPECTIVES",
-          // to: [data.email, "info@perspectivesci.com"],
-          emailData: {
-            coworkingName: space.title,
-            category: group.title,
-            location: space.adresse,
-            clientName: data.name,
-            clientEmail: data.email,
-            clientPhone: data.phone,
-            reservationPrice: totalAmount,
-            date: formatDates(dates),
-            priceType: selectedTarif,
-            PerspectivesImage: space.images[0].src,
-          },
-        }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to send email");
-          }
-          router.push(
-            `/recap?type=payment&name=${encodeURIComponent(data.name)}&email=${encodeURIComponent(data.email)}&phone=${encodeURIComponent(data.phone)}&groupId=${group.id}&spaceId=${space.id}&dates=${formatDates(dates)}&amount=${totalAmount}&tarif=${encodeURIComponent(selectedTarif)}`
-          );
-        })
-        .catch(() => {
-          toast("Erreur", {
-            description: "Une erreur est survenue lors de l'envoi de la facture",
-          });
-        });
-    } else if (paymentStatus === "error") {
-      toast("Paiement échoué", {
-        description: "Une erreur est survenue lors du paiement",
-      });
-    }
-  }, [paymentStatus,data,
-    totalAmount,
-    selectedTarif,
-    dates,
-    group.id,
-    space.id,
-    space.title,
-    space.adresse,
-    space.images,
-    router,]);
-
   return (
     <section className="container min-h-[300px] py-14 relative">
       <TitleSection title={"Détail de réservation"} />
@@ -208,14 +160,7 @@ export default function Content({ group, space }: { group: any; space: any }) {
           <div className="grid w-full items-start gap-6">
             <div className="grid gap-6 rounded-lg border p-4">
               <CardTitle>Détail sur l&apos;espace</CardTitle>
-              <div className="flex items-center gap-4">
-                <div className="grid gap-1">
-                  <p className="text-sm font-medium leading-none">Catégorie</p>
-                </div>
-                <div className="ml-auto text-sm font-medium">
-                  {group?.title}
-                </div>
-              </div>
+             
               <div className="flex items-center gap-4">
                 <div className="grid gap-1">
                   <p className="text font-medium leading-none">Nom</p>
@@ -262,6 +207,36 @@ export default function Content({ group, space }: { group: any; space: any }) {
                   <p role="alert">Téléphone est requis</p>
                 )}
               </div>
+              {/* Champs spécifiques salle de conférence */}
+              {isConferenceRoom && (
+                <>
+                  <div className="grid gap-3">
+                    <Label htmlFor="nombreParticipants">Nombre de participants</Label>
+                    <Input
+                      id="nombreParticipants"
+                      type="number"
+                      min={1}
+                      {...register("nombreParticipants", { required: true, min: 1 })}
+                      aria-invalid={errors.nombreParticipants ? "true" : "false"}
+                    />
+                    {errors.nombreParticipants && (
+                      <p role="alert">Nombre de participants requis</p>
+                    )}
+                  </div>
+                  <div className="grid gap-3">
+                    <Label htmlFor="nomEvenement">Nom de l&apos;événement</Label>
+                    <Input
+                      id="nomEvenement"
+                      type="text"
+                      {...register("nomEvenement", { required: true })}
+                      aria-invalid={errors.nomEvenement ? "true" : "false"}
+                    />
+                    {errors.nomEvenement && (
+                      <p role="alert">Nom de l&apos;événement requis</p>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -270,43 +245,48 @@ export default function Content({ group, space }: { group: any; space: any }) {
             <CardTitle>Détail du paiement</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-8">
-            {hasTarifs && (
-              <div className="grid gap-3">
-                <Label htmlFor="tarif">Tarifs</Label>
-                <Select
-                  onValueChange={(value) => {
-                    setSelectedTarif(value);
-                    setIsMonthlyTarif(value.toLowerCase().includes("mois"));
-                    setDates([]); // Réinitialiser les dates lors du changement de tarif
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Sélectionnez un tarif" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {selectedSpace.tarifs.map(
-                      (tarifGroup: any, groupIndex: number) => (
-                        <React.Fragment key={groupIndex}>
-                          <SelectItem value={`group-${groupIndex}`} disabled>
-                            {tarifGroup.name}
-                          </SelectItem>
-                          {tarifGroup.items.map(
-                            (item: any, itemIndex: number) => (
-                              <SelectItem
-                                key={`${groupIndex}-${itemIndex}`}
-                                value={`${tarifGroup.name}|${item.title}`}
-                              >
-                                {item.title} - {item.price}
-                              </SelectItem>
-                            )
-                          )}
-                        </React.Fragment>
-                      )
-                    )}
-                  </SelectContent>
-                </Select>
-              </div>
-            )}
+            {/* Sélection du tarif */}
+            <div className="grid gap-3">
+              <Label htmlFor="tarif">Tarif</Label>
+              <Select
+                onValueChange={(value) => {
+                  setSelectedTarif(value);
+                  setIsMonthlyTarif(value.toLowerCase().includes("mois"));
+                  setDates([]); // Réinitialiser les dates lors du changement de tarif
+                }}
+                value={selectedTarif}
+                required
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Sélectionnez un tarif" />
+                </SelectTrigger>
+                <SelectContent>
+                  {selectedSpace.tarifs && selectedSpace.tarifs.map(
+                    (tarifGroup: any, groupIndex: number) => (
+                      <React.Fragment key={groupIndex}>
+                        <SelectItem value={`group-${groupIndex}`} disabled>
+                          {tarifGroup.name}
+                        </SelectItem>
+                        {tarifGroup.items.map(
+                          (item: any, itemIndex: number) => (
+                            <SelectItem
+                              key={`${groupIndex}-${itemIndex}`}
+                              value={`${tarifGroup.name}|${item.title}`}
+                            >
+                              {item.title} - {item.price}
+                            </SelectItem>
+                          )
+                        )}
+                      </React.Fragment>
+                    )
+                  )}
+                </SelectContent>
+              </Select>
+              {!selectedTarif && (
+                <span className="text-red-500 text-xs">Le tarif est requis</span>
+              )}
+            </div>
+            {/* Sélection de la date */}
             <div className="grid gap-3">
               <Label htmlFor="date">
                 {isMonthlyTarif ? "Choisissez les mois" : "Choisissez les dates"}
@@ -322,29 +302,48 @@ export default function Content({ group, space }: { group: any; space: any }) {
                   isMonthlyTarif ? date.getDate() !== 1 : false
                 }
               />
+              {dates.length === 0 && (
+                <span className="text-red-500 text-xs">La date est requise</span>
+              )}
             </div>
-            {hasTarifs && (
-              <div className="text-right font-bold">
-                Total: {totalAmount} FCFA
-              </div>
+            {/* Affichage du tarif sélectionné */}
+            {selectedTarif && (
+              <div className="text-md font-semibold">Tarif sélectionné : {selectedTarif}</div>
+            )}
+            {/* Affichage des dates sélectionnées */}
+            {dates.length > 0 && (
+              <div className="text-md font-semibold">Date(s) : {formatDates(dates)}</div>
             )}
             <Button
               type="submit"
-              disabled={
-                !isValid || dates.length === 0 || (hasTarifs && !selectedTarif)
-              }
+              disabled={!isValid || dates.length === 0 || !selectedTarif}
               className="ml-auto gap-1"
             >
               <span>
-                {hasTarifs
-                  ? "Confirmer le paiement"
-                  : "Demander une réservation"}
+                Demander une réservation
                 <ArrowUpRight className="h-4 w-4" />
               </span>
             </Button>
           </CardContent>
         </Card>
       </form>
+      <Dialog open={showSuccess} onOpenChange={(open) => {
+        setShowSuccess(open);
+        if (!open) {
+          router.push("/our_spaces/private_offices");
+        }
+      }}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Réservation envoyée !</DialogTitle>
+          </DialogHeader>
+          <div className="py-4 text-center">
+            <p className="text-lg font-semibold mb-2">Votre demande de réservation a bien été envoyée.</p>
+            <p>Un email de confirmation a été envoyé à votre adresse et à l&apos;administrateur.</p>
+          </div>
+          <Button onClick={() => setShowSuccess(false)} className="w-full mt-2">Fermer</Button>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
