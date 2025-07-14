@@ -46,13 +46,13 @@ const mainProperties: Property[] = [
 
   { src: "/images/Apparts/appart soleil/soleil 1.0.2.0.png", alt: "Salon - Appartement Soleil", width: 800, height: 500, apartment: "Appartement Soleil" },
 
-  { src: "/images/Apparts/complex carré Massina/appart/IMG_0987.DNG.png", alt: "Chambre - Complexe Carré Massina", width: 800, height: 500, apartment: "Complexe Carré Massina" },
+  // { src: "/images/Apparts/complex carré Massina/appart/IMG_0987.DNG.png", alt: "Chambre - Complexe Carré Massina", width: 800, height: 500, apartment: "Complexe Carré Massina" },
   { src: "/images/Apparts/ungosse.jpg", alt: "Chambre - Complexe Marron", width: 800, height: 500, apartment: "Marron" },
 ];
 
 // Autres propriétés
 const otherProperties: Property[] = [
-  { src: "/images/Apparts/complex carré Massina/salle de conf/img3_091900.png", alt: "Salon luxueux - Salle de réunion", width: 800, height: 600, apartment: "Salle de réunion" },
+  { src: "/images/Apparts/complex carré Massina/appart/IMG_0987.DNG.png", alt: "Salon luxueux - Salle de réunion", width: 800, height: 600, apartment: "Complexe Carré Massina" },
 ];
 
 // Grouper les propriétés par appartement
@@ -104,7 +104,7 @@ export default function DescriptionAllSpaces() {
         <Tabs defaultValue="main" className="mt-8">
           <TabsList className="grid grid-cols-2 w-full">
             <TabsTrigger value="main" className="text-md">Propriétés principales</TabsTrigger>
-            <TabsTrigger value="other" className="text-md">Salle de réunion</TabsTrigger>
+            <TabsTrigger value="other" className="text-md">Complexes</TabsTrigger>
           </TabsList>
          <TabsContent value="main" className="mt-6">
   <div className="flex flex-wrap gap-6 justify-center">

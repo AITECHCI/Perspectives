@@ -54,9 +54,9 @@ export default function SubSection() {
             {/* Image section */}
             <div className="md:w-1/2 flex justify-center mt-0 sm:mt-0 md:-mt-96">
               <Image
-                src="/images/valeur/4.jpg"
+                src="/images/Poignée de main.jpg"
                 alt="Qui sommes-nous"
-                className="w-full max-w-[300px] sm:max-w-[350px] md:max-w-[400px] h-auto rounded-lg shadow-lg"
+                className="w-[500px] h-[390px] max-w-[800px] sm:max-w-[700px] md:max-w-[600px]  rounded-lg shadow-lg"
                 width={400}
                 height={300}
                 priority // Optional: Improves loading for above-the-fold images

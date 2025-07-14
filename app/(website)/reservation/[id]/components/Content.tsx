@@ -41,6 +41,7 @@ export default function Content({ group, space }: { group: any; space: any }) {
   const [data, setData] = useState<any>();
   const [isMonthlyTarif, setIsMonthlyTarif] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   
   const {
     register,
@@ -97,6 +98,7 @@ export default function Content({ group, space }: { group: any; space: any }) {
   const { open, paymentStatus } = usePay();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    setIsLoading(true);
     setData(data);
     try {
       const response = await fetch("/api/send-email/sallereservation", {
@@ -111,7 +113,7 @@ export default function Content({ group, space }: { group: any; space: any }) {
             clientName: data.name,
             clientEmail: data.email,
             clientPhone: data.phone,
-            tarif: selectedTarif,
+            tarif: formatSelectedTarif(selectedTarif),
             dates: formatDates(dates),
             ...(isConferenceRoom && {
               nombreParticipants: data.nombreParticipants,
@@ -131,6 +133,8 @@ export default function Content({ group, space }: { group: any; space: any }) {
       toast("Erreur", {
         description: "Une erreur est survenue lors de l'envoi de la demande",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -149,6 +153,47 @@ export default function Content({ group, space }: { group: any; space: any }) {
     }
   }, [selectedTarif, dates]);
 
+  // Liste des tarifs personnalisés (depuis la capture)
+  const tarifsCustom = [
+    { group: "Bureaux", items: [
+      { label: "2-3 personnes", price: "530,000fcfa" },
+      { label: "3-5 personnes", price: "730,000fcfa" },
+    ]},
+    { group: "Salle de conseil", items: [
+      { label: "35 personnes", price: "350,000fcfa" },
+    ]},
+    { group: "Auditorium", items: [
+      { label: "70 personnes", price: "600,000fcfa" },
+    ]},
+    { group: "Salles", items: [
+      { label: "15 personnes", price: "180,000fcfa" },
+    ]},
+    { group: "Appartements", items: [
+      { label: "3 pièces", price: "150,000fcfa" },
+      { label: "4 pièces", price: "200,000fcfa" },
+    ]},
+    { group: "Chambres strandars", items: [
+      { label: "Chambre strandar", price: "80,000fcfa" },
+      { label: "Suite 1", price: "90,000fcfa" },
+      { label: "Suite 2", price: "110,000fcfa" },
+    ]},
+  ];
+
+  // Fonction pour formater l'affichage du tarif sélectionné
+  const formatSelectedTarif = (tarifString: string): string => {
+    if (!tarifString) return "";
+    
+    const [groupName, itemLabel] = tarifString.split("|");
+    const tarifGroup = tarifsCustom.find(t => t.group === groupName);
+    const tarifItem = tarifGroup?.items.find(item => item.label === itemLabel);
+    
+    if (tarifItem) {
+      return `${groupName}-${tarifItem.price}`;
+    }
+    
+    return tarifString; // Fallback si pas trouvé
+  };
+
   return (
     <section className="container min-h-[300px] py-14 relative">
       <TitleSection title={"Détail de réservation"} />
@@ -165,7 +210,7 @@ export default function Content({ group, space }: { group: any; space: any }) {
                 <div className="grid gap-1">
                   <p className="text font-medium leading-none">Nom</p>
                 </div>
-                <div className="ml-auto font-medium">{space?.title}</div>
+                <div className="ml-auto font-medium">Complexe Carré Massina</div>
               </div>
             </div>
 
@@ -261,25 +306,21 @@ export default function Content({ group, space }: { group: any; space: any }) {
                   <SelectValue placeholder="Sélectionnez un tarif" />
                 </SelectTrigger>
                 <SelectContent>
-                  {selectedSpace.tarifs && selectedSpace.tarifs.map(
-                    (tarifGroup: any, groupIndex: number) => (
-                      <React.Fragment key={groupIndex}>
-                        <SelectItem value={`group-${groupIndex}`} disabled>
-                          {tarifGroup.name}
+                  {tarifsCustom.map((group, groupIndex) => (
+                    <React.Fragment key={groupIndex}>
+                      <SelectItem value={`group-${groupIndex}`} disabled>
+                        {group.group}
+                      </SelectItem>
+                      {group.items.map((item, itemIndex) => (
+                        <SelectItem
+                          key={`${groupIndex}-${itemIndex}`}
+                          value={`${group.group}|${item.label}`}
+                        >
+                          {item.label} - {item.price}
                         </SelectItem>
-                        {tarifGroup.items.map(
-                          (item: any, itemIndex: number) => (
-                            <SelectItem
-                              key={`${groupIndex}-${itemIndex}`}
-                              value={`${tarifGroup.name}|${item.title}`}
-                            >
-                              {item.title} - {item.price}
-                            </SelectItem>
-                          )
-                        )}
-                      </React.Fragment>
-                    )
-                  )}
+                      ))}
+                    </React.Fragment>
+                  ))}
                 </SelectContent>
               </Select>
               {!selectedTarif && (
@@ -307,21 +348,28 @@ export default function Content({ group, space }: { group: any; space: any }) {
               )}
             </div>
             {/* Affichage du tarif sélectionné */}
-            {selectedTarif && (
-              <div className="text-md font-semibold">Tarif sélectionné : {selectedTarif}</div>
-            )}
+         
             {/* Affichage des dates sélectionnées */}
             {dates.length > 0 && (
               <div className="text-md font-semibold">Date(s) : {formatDates(dates)}</div>
             )}
             <Button
               type="submit"
-              disabled={!isValid || dates.length === 0 || !selectedTarif}
+              disabled={!isValid || dates.length === 0 || !selectedTarif || isLoading}
               className="ml-auto gap-1"
             >
               <span>
-                Demander une réservation
-                <ArrowUpRight className="h-4 w-4" />
+                {isLoading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Réservation en cours...
+                  </>
+                ) : (
+                  <>
+                    Demander une réservation
+                    <ArrowUpRight className="h-4 w-4" />
+                  </>
+                )}
               </span>
             </Button>
           </CardContent>
@@ -341,7 +389,10 @@ export default function Content({ group, space }: { group: any; space: any }) {
             <p className="text-lg font-semibold mb-2">Votre demande de réservation a bien été envoyée.</p>
             <p>Un email de confirmation a été envoyé à votre adresse et à l&apos;administrateur.</p>
           </div>
-          <Button onClick={() => setShowSuccess(false)} className="w-full mt-2">Fermer</Button>
+          <Button onClick={() => {
+            setShowSuccess(false);
+            router.push("/our_spaces/private_offices");
+          }} className="w-full mt-2">Fermer</Button>
         </DialogContent>
       </Dialog>
     </section>

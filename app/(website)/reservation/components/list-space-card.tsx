@@ -44,7 +44,7 @@ const roomTypes: RoomType[] = [
   { id: "appart_pressing", title: "Appartement Pressing", pricePerNight: 50000 },
   { id: "appart_soleil", title: "Appartement Soleil", pricePerNight: 150000 },
   { id: "appart_prima", title: "Appartement Prima", pricePerNight: 80000 },
-  { id: "appart_complexe_carre_massina", title: "Complexe Carré Massina", pricePerNight: 100000 },
+  // { id: "appart_complexe_carre_massina", title: "Complexe Carré Massina", pricePerNight: 100000 },
 ];
 
 export default function ListSpaceCard({

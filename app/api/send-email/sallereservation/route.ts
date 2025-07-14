@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
       subject,
       to,
       react: SalleEmail(filteredEmailData),
-      userName: emailData.clientName, // Utiliser clientName comme userName
+      userName: "norephy", // Utiliser norephy comme nom d'expéditeur
       userEmail: emailData.clientEmail,
     });
 

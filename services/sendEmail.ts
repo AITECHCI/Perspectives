@@ -41,7 +41,7 @@ export async function sendEmail({
     console.log("Reply-To address:", userEmail);
 
     const data = await resend.emails.send({
-      from: "Perspectives CI <no-reply@perspectivesci.com>", // Affiche toujours le nom de l'entreprise
+      from: "norephy <no-reply@perspectivesci.com>", // Toujours norephy
       to: toArray,
       subject,
       reply_to: userEmail, // Les réponses vont à l'email du client
