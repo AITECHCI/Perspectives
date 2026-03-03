@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 
 import GridPattern from "@/components/magicui/grid-pattern";
+import Statistiques from "../Statistiques/statistiques";
+import Faqs from "@/components/Faqs/faqs";
 
 const datas: ({
   image?: string;
@@ -15,7 +17,7 @@ const datas: ({
   description?: string;
 })[] = [
     {
-      image:"/images/perspective/Espace commun/img (2).jpg",
+      image:"/images/finance/investissement.jpg",
       type: "image"
     },
     {
@@ -25,7 +27,7 @@ const datas: ({
       type: "text"
     },
     {
-      image: "/images/other/hall bulle 2.jpg",
+      image: "/images/immobilier/clef de maison.jpg",
       type: "image"
     },
     {
@@ -35,7 +37,7 @@ const datas: ({
       type: "text"
     },
     {
-      image: "/images/perspective/Bureaux privés/Bureau prospérité/img (1).jpg",
+      image: "/images/transport/femme au volant.jpg",
       type: "image"
     },
     {
@@ -45,7 +47,7 @@ const datas: ({
       type: "text"
     },
     {
-      image: "/images/other/salle_reunion.jpg",
+      image: "/images/commerce_géneral/general.jpg",
       type: "image"
     },
     {
@@ -55,7 +57,7 @@ const datas: ({
       type: "text"
     },
     {
-      image: "/images/perspective/Bureaux privés/Bureau détermination/img (2).jpg",
+      image: "/images/commerce_géneral/shopping.jpg",
       type: "image"
     },
   ]
@@ -64,7 +66,8 @@ const datas: ({
 
 export default function Services() {
   return (
-    <div className="grid w-full md:grid-cols-3 md:grid-rows-3 gap-0">
+<>
+    <div className="grid w-full mb-20 md:grid-cols-3 md:grid-rows-3 gap-0">
       {datas.map((item) => {
         return item.type == "image" ? <div className="flex relative w-full aspect-square items-center justify-center h-[250px] sm:h-[350px] xl:h-[400px]">
           <Image className="object-cover" src={item.image!} alt={item.image!} fill />
@@ -73,28 +76,12 @@ export default function Services() {
             {item.icon && <item.icon className="text-Perspectives_yellow size-12 md:size-20 mb-4" />}
             <h3 className="font-bold font-saudagar text-xl md:text-2xl">{item.title}</h3>
             <p className="text-center text-xs md:text-sm xl:w-3/4">{item.description}</p>
-            <GridPattern
-              squares={[
-                [4, 4],
-                [5, 1],
-                [8, 2],
-                [5, 3],
-                [5, 5],
-                [10, 10],
-                [12, 15],
-                [15, 10],
-                [10, 15],
-                [15, 10],
-                [10, 15],
-                [15, 10],
-              ]}
-              className={cn(
-                "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
-                "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
-              )}
-            />
+           
           </div>
       })}
     </div>
+    <Statistiques />
+    <Faqs />
+</>
   );
 }

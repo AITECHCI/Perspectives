@@ -37,22 +37,23 @@ export default function HeroCarousel({ images }: { images: string[] }) {
         clickable: true,
       }}
       modules={[EffectFade, Navigation, Autoplay]}
-      className={"w-full h-full relative"}
+      className={"w-full  p-5 h-full relative "}
     >
       {images?.map((img, key) => {
         return (
-          <SwiperSlide
-            key={key}
-            className={cn("relative rounded-md overflow-hidden")}
-          >
-            <Image
-              alt={img}
-              className="bg-center bg-cover object-cover w-full h-full"
-              src={img}
-              fill
-            />
-            <div className="absolute z-[1] top-0 left-0 w-full h-full bg-gradient-to-b from-black to-novis_green opacity-50" />
-          </SwiperSlide>
+     <SwiperSlide
+  key={key}
+  className={cn("relative overflow-hidden rounded-tr-[40px] rounded-bl-[40px] ")} // ⬅️ arrondi sur le conteneur
+>
+  <Image
+    alt={img}
+    className="bg-center bg-cover object-cover inset-0 w-full h-full rounded-tr-[40px] rounded-bl-[40px] "// ⬅️ arrondi sur l'image
+    src={img}
+    fill
+  />
+  <div className="absolute z-[1] top-0 left-0 w-full h-full bg-gradient-to-b from-black to-novis_green opacity-50 rounded-tr-[40px] rounded-bl-[40px] " />
+</SwiperSlide>
+
         );
       })}
 

@@ -1,118 +1,9 @@
-export const datas: List_SpaceCard[] = [
-  {
-    id: "private_offices",
-    title: "Bureaux privés",
-    items: [
-      {
-        id: "bureau_confiance",
-        title: "Bureau confiance",
-        imagePath: "/Bureaux privés/Bureau confiance",
-      },
-      {
-        id: "bureau_determination",
-        title: "Bureau détermination",
-        imagePath: "/Bureaux privés/Bureau détermination",
-      },
-      {
-        id: "bureau_prosperite",
-        title: "Bureau prospérité",
-        imagePath: "/Bureaux privés/Bureau prospérité",
-      },
-      {
-        id: "bureau_excellence",
-        title: "Bureau excellence",
-        imagePath: "/Bureaux privés/Bureau prospérité",
-      },
-      {
-        id: "bureau_serenite",
-        title: "bureau sérénité",
-        imagePath: "/Bureaux privés/Bureau prospérité",
-      },
-    ],
-  },
-  {
-    id: "open_space",
-    title: "Open space",
-    items: [
-      {
-        id: "open_space",
-        title: "Espace Bulle Open space",
-        imagePath: "/Espace Bulle Open space",
-      },
-    ],
-  },
-  {
-    id: "meeting_room",
-    title: "Salle de réunion",
-    items: [
-      {
-        id: "meeting_room",
-        title: "Salle de réunion",
-        imagePath: "/Salle de réunion",
-      },
-    ],
-  },
-  {
-    id: "common_space",
-    title: "Espace commun",
-    items: [
-      {
-        id: "common_space",
-        title: "Espace commun",
-        imagePath: "/Espace commun",
-      },
-    ],
-  },
-  {
-    id: "logistics_space",
-    title: "Espace Logistique",
-    items: [
-      {
-        id: "warehouse",
-        title: "Entrepôt",
-        imagePath: "/Logistique/Entrepôt",
-      },
-      {
-        id: "transport_space",
-        title: "Espace Transport",
-        imagePath: "/Logistique/Espace Transport",
-      },
-    ],
-  },
-  {
-    id: "cleaning_space",
-    title: "Espace Nettoyage",
-    items: [
-      {
-        id: "cleaning_services",
-        title: "Services de nettoyage",
-        imagePath: "/Nettoyage/Services de nettoyage",
-      },
-    ],
-  },
-  {
-    id: "commerce_space",
-    title: "Espace Commerce",
-    items: [
-      {
-        id: "import_export",
-        title: "Import-Export",
-        imagePath: "/Commerce/Import-Export",
-      },
-      {
-        id: "appliances_sales",
-        title: "Vente d'appareils électroménagers",
-        imagePath: "/Commerce/Vente appareils électroménagers",
-      },
-    ],
-  },
-];
 
 export const offres = [
   {
     id: "domiciliation_virtuelle_entreprise",
     title: "Finance",
-    subdescription: "Choisissez notre adresse pour en faire la vôtre.",
+    subdescription: "Notre expertise au service de vos ambitions...",
     description: [
       "Dans le cadre de l'immatriculation de votre entreprise au CEPICI pour obtenir une autorisation légale d'exercer votre activité en Côte-d'Ivoire il vous sera nécessaire de disposer d'un siège-social et de vous rattacher par la suite à un centre d'impôts ivoirien.",
       "Perspectives  met à votre disposition une adresse géographique. Grâce à la souscription d'un abonnement annuel vous obtenez un contrat qui vous permettra de compléter votre dossier auprès du notaire, de l'avocat ou l'expert en charge de faire la constitution de votre société à Abidjan.",
@@ -134,7 +25,7 @@ export const offres = [
         icon: "flex",
       },
     ],
-    image: "/images/perspective/Espace Bulle Open space/img (1).jpg",
+    image: "/images/finance/analyse financière.jpg",
     elements: [
       {
         icon: "🏢", // Représentation symbolique d'un bâtiment
@@ -171,9 +62,9 @@ export const offres = [
   },
   {
     id: "domiciliation_physique_entreprise",
-    title: "Imobilier - Logistique",
+    title: "Immobilier",
     subdescription:
-      "Profitez du confort et de l'ambiance dynamisante de notre espace de .",
+      "Habiter l’excellence, investir dans la valeur...",
     description: [
       "Dans un environnement où le coût de l'immobilier ne fait que s'accroître, il est important en tant qu'investisseur en côte d'ivoire, entrepreneur ou entreprises internationales de trouver des stratégies pour installer l'entreprise à moindre coût.",
       "Perspectives  vous aide à atteindre cet objectif en minimisant vos coûts. Offrez-vous le luxe de bénéficier d'un bureau élégant à Abidjan au sein d'un espace partagé avec une communauté (locaux, expatriés, repats) et bénéficiez d'un large réseau.",
@@ -193,7 +84,7 @@ export const offres = [
         horraire: "10h-14h",
       },
     ],
-    image: "/images/other/exterieur.jpg",
+    image: "/images/immobilier/cle de maison.jpg",
 
     elements: [
       {
@@ -245,8 +136,8 @@ export const offres = [
   },
   {
     id: "location_occasionnelle_de_bureaux_meubles",
-    title: "Transit - Trasport",
-    subdescription: "Faites comme chez vous !",
+    title: " Transit-Transport",
+    subdescription: "Maîtriser les flux, garantir les délais, sécuriser chaque étape...",
     description: [
       "Conscient du fait que toutes les entreprises n'ont pas les mêmes besoins et le même budget nous donnons la possibilité à chacun de pouvoir évoluer à son rythme. A L'heure, à la journée, à la semaine ou au mois venez comme vous êtes.",
       "A chaque bureau son ambiance et son authenticité, choisissez qui vous va à l'instant en fonction de votre humeur pour votre bien être et une meilleure productivité. ",
@@ -286,13 +177,13 @@ export const offres = [
           "/images/perspective/Bureaux privés/Bureau excellence/budget.png",
       },
     ],
-    image: "/images/other/bureau_equipe.jpg",
+    image: "/images/transport/camion_transport.jpg",
   },
   {
     id: "location_salle_de_reunion",
     title: "Commerce generale",
     subdescription:
-      "Louez une salle de réunion équipée pour vos rencontres professionnelles.",
+      "Tout l'électroménager dont vous avez besoin à portée de clic…",
     description: [
       "Aménagées de manière ergonomique et confortable, notre salle de réunion avec sa capacité de 10 personnes minimum est entièrement équipée pour accueillir vos rencontres professionnelles abidjanaises.",
       "Grâce à son accessibilité c'est l'emplacement rêvé pour organiser vos réunions, vos formations, vos masterclass. Vos convives, collaborateurs, clients ne pourraient être que ravis de cet endroit que nous nommons affectueusement le labo.",
@@ -320,7 +211,7 @@ export const offres = [
     optionsSup:
       "Pour vous aider à vous concentrer exclusivement sur votre activité, nous vous proposons de nous confier l'organisation de vos petits-déjeuners, pauses café, déjeuners, etc.",
     options: ["Event planner", "Service premium"],
-    image: "/images/other/salle_reunion.jpg",
+    image: "/images/commerce_géneral/commerce.jpg",
 
   },
   // {
@@ -442,6 +333,9 @@ export const partenaires = [
 ];
 
 
+
+
+
 export const galeries = [
   {
     id: "evenements_collaboratifs",
@@ -487,72 +381,18 @@ export const galeries = [
 
 export const espaces = [
   {
-    id: "private_offices",
-    title: "Bureaux privés",
+    // id: "private_offices",
+    // title: "Bureaux privés",
     images: [
-      {
-        src: "/images/perspective/Bureaux privés/Bureau prospérité/img (1).jpg",
-        width: 1037,
-        height: 691,
+       {
+       src: "/images/perspective/buying-selling-house.jpg",
+        width: 900,
+        height: 200,
       },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau prospérité/img (2).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau prospérité/img (3).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau détermination/img (1).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau détermination/img (2).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau détermination/img (3).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau confiance/img (1).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau confiance/img (2).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau confiance/img (3).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau excellence/img (1).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau excellence/img (2).jpg",
-        width: 1037,
-        height: 691,
-      },
-      {
-        src: "/images/perspective/Bureaux privés/Bureau excellence/img (3).jpg",
-        width: 1037,
-        height: 691,
-      },
+       
     ],
-    adresse:
-      "RUE ALEX FLEMING MARCORY ZONE 4C ABIDJAN-CÔTE D’IVOIRE",
+    // adresse:
+    //   "RUE ALEX FLEMING MARCORY ZONE 4C ABIDJAN-CÔTE D’IVOIRE",
     description: (
       <>
         <p className="text-sm md:text-md mb-2 md:mb-3">
@@ -672,6 +512,7 @@ export const espaces = [
           },
         ],
       },
+      
       {
         id: "bureau_determination",
         title: "Bureau détermination",

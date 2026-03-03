@@ -7,29 +7,27 @@ export interface ShowcaseCardProps {
 }
 const datas: ShowcaseCardProps[] = [
   {
-    image: "/images/Partenaires/logo1.png",
+    image: "/images/Partenaires/logo8.png",
   },
   {
-    image: "/images/Partenaires/logo2.jpg",
+    image: "/images/Partenaires/logo1.png",
   },
 
   {
-    image: "/images/Partenaires/logo3.jpg",
-  },
-  {
     image: "/images/Partenaires/logo4.jpg",
-  },
-  {
-    image: "/images/Partenaires/logo5.png",
-  },
-  {
-    image: "/images/Partenaires/logo6.jpg",
   },
   {
     image: "/images/Partenaires/logo7.png",
   },
   {
-    image: "/images/Partenaires/logo8.png",
+    image: "/images/Partenaires/logo5.png",
+  },
+ 
+  {
+    image: "/images/Partenaires/logo2.jpg",
+  },
+  {
+    image: "/images/Partenaires/logo3.jpg",
   },
 ];
 

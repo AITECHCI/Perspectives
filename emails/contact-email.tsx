@@ -27,17 +27,16 @@ export const ContactEmail: React.FC<ContactEmailData> = ({
 }) => (
   <Html>
     <Head />
-    <Preview>Nouveau message de contact de {name}</Preview>
+    <Preview>Nouveau message de {name}</Preview>
     <Body style={main}>
       <Container style={container}>
         <Img
-          src={`${process.env.NEXT_PUBLIC_BASE_URL}/images/logo.png`}
+          src={`${process.env.NEXT_PUBLIC_BASE_URL}`}
           width="100"
           height="100"
           alt="PERSPECTIVES"
           style={logo}
         />
-        <Heading style={heading}>Nouveau message de contact</Heading>
         <Section style={section}>
           <Text style={text}>
             <strong>Nom :</strong> {name}

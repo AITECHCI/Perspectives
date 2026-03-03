@@ -53,7 +53,7 @@ export default function SolutionsCarousel() {
                                     group-hover/solution_item:bg-perspectives_marron transition-all duration-500"
                   >
                     <CardTitle className="text-white font-saudagar">{data.title}</CardTitle>
-                    <CardDescription className="text-white pb-4 px-2">
+                    <CardDescription className="text-white pb-24 px-2">
                       {data.subdescription}
                     </CardDescription>
                     <CardFooter>
@@ -63,7 +63,7 @@ export default function SolutionsCarousel() {
                           "max-w-52 gap-2 overflow-hidden whitespace-pre",
                           "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2"
                         )}
-                        href={`/our_offers/${data.id}`}
+                        href={`/our_spaces/${data.id}`}
                       >
                         <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40" />
                         <div className="flex items-center">
@@ -73,7 +73,9 @@ export default function SolutionsCarousel() {
                         </div>
                       </Link>
                     </CardFooter>
+                   
                   </div>
+                 
                 </CardContent>
               </Card>
             </div>
@@ -83,5 +85,6 @@ export default function SolutionsCarousel() {
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
+  
   );
 }

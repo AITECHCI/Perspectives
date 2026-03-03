@@ -21,26 +21,7 @@ export default function About() {
           </p>
         </div>
       </div>
-      <GridPattern
-        squares={[
-          [2, 2],
-          [3, 1],
-          [4, 1],
-          [2, 1],
-          [3, 3],
-          [5, 5],
-          [6, 8],
-          [8, 5],
-          [5, 4],
-          [4, 5],
-          [5, 4],
-          [4, 5],
-        ]}
-        className={cn(
-          "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-30%] h-full skew-y-12",
-        )}
-      />
+     
       <Services />
     </section>
   );

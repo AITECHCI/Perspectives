@@ -46,3 +46,23 @@ interface List_SpaceCard {
     id: string,
     items: I_SpaceCard[];
 }
+
+export interface FormulaEmailData {
+  clientName: string;
+  clientEmail: string;
+  clientPhone: string;
+  roomType:string;
+  dates: string;
+  guests:number;
+  totalPrice:number;
+}
+
+export interface SalleEmailData {
+    clientName: string;
+    clientEmail: string;
+    clientPhone: string;
+    tarif: string;
+    dates: string;
+    nombreParticipants?: number;
+    nomEvenement?: string;
+}

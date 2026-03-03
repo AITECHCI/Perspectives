@@ -1,24 +1,39 @@
 import type { Metadata } from "next";
-import { Roboto as FontSans } from "next/font/google"
-import { Lora } from "next/font/google"
+import localFont from "next/font/local";
 import "./globals.css";
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-sans",
-})
-
-const fontLora = Lora({
-  subsets: ["latin"],
-  variable: "--font-lora",
-})
+// Configuration de Book Antiqua
+const fontBookAntiqua = localFont({
+  src: [
+    {
+      path: "../public/fonts/book antiqua/Book-Antiqua.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/book antiqua/Book-Antiqua.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/book antiqua/Book-Antiqua.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/book antiqua/Book-Antiqua.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-book-antiqua",
+  display: "swap", // Améliore le chargement (évite le texte invisible)
+});
 
 export const metadata: Metadata = {
-  title: "Persectives",
-  description: "Persectives",
+  title: "Perspectives",
+  description: "Perspectives", // Corrige la typo "Persectives"
 };
 
 export default function RootLayout({
@@ -28,13 +43,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(
-        `relative flex min-h-screen w-full flex-col justify-center 
-        overflow-x-hidden scroll-smooth bg-background font-sans antialiased
-        `,
-        fontSans.variable,
-        fontLora.variable,
-      )}>{children}</body>
+      <body
+        className={cn("font-bookAntiqua", fontBookAntiqua.variable)}
+      >
+        {children}
+      </body>
     </html>
   );
 }

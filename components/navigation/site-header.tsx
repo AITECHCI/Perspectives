@@ -10,26 +10,37 @@ export default function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full supports-backdrop-blur:bg-background/95 bg-background/95 backdrop-blur-lg"
+        "sticky top-0 z-40 w-full supports-backdrop-blur:bg-background/95 bg-[#FFF7F4] backdrop-blur-lg"
       )}
     >
-      <div className="container px-4 flex h-16 items-center">
+      <style jsx>{`
+        @media (max-width: 767px) {
+          .hide-on-mobile {
+            display: none;
+          }
+        }
+      `}</style>
+      <div className="container px-4 flex h-16 items-center justify-between">
+        {/* Logo and Sidebar */}
+        <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center space-x-2">
+            <Icons.logo_black_rogner className="w-14 md:size-26" />
+          </Link>
+          <Sidebar />
+        </div>
         {/* Navigation principale */}
-        <MainNav />
-        {/* Sidebar */}
-        <Sidebar />
-        {/* Espace pour la navigation mobile (commenté pour l'instant) */}
-        {/* <MobileNav /> */}
-
+        <div className="hide-on-mobile">
+          <MainNav />
+        </div>
         {/* Bouton de réservation */}
-        <div className="flex flex-1 items-center gap-2 justify-end">
+        <div className="flex items-center gap-2 md:bg-[#F4E0D7]">
           <Link
             className={cn(
               buttonVariants(),
               "max-w-32 md:max-w-48 gap-2 overflow-hidden whitespace-pre",
-              "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2"
+              "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-[#F4E0D7]"
             )}
-            href="/reservation"
+            href="/our_spaces/private_offices"
           >
             <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40" />
             <div className="flex items-center">

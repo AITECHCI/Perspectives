@@ -20,13 +20,10 @@ const config = {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-        lora: ["var(--font-lora)", ...fontFamily.sans],
-        lemonMilk: ["LemonMilk", "sans-serif"],
-        ardelaEdge: ["ArdelaEdge", "sans-serif"],
-        saudagar: ["saudagar", "sans-serif"],
+     fontFamily: {
+        bookAntiqua: ["var(--font-book-antiqua)", "Times", "serif"],
       },
+      
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

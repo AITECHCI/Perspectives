@@ -1,15 +1,15 @@
 import * as React from "react"
 import ServicesCarousel from "./services-carousel"
+import localFont from "next/font/local";
 
 export default function Services() {
     return (
-        <section id="showcase" className="container px-2 md:px-8 py-14">
-            <h2 className="text-novis_yellow mb-2 text-center font-medium text-2xl md:text-4xl tracking-tight font-saudagar">
+        <section id="showcase" className="container mb-36 px-2 md:px-8 py-14">
+            <h2 className="text-[#8E421C]  text-4xl font-bold mb-3 text-center md:text-4xl tracking-tight">
                 Nos Services
             </h2>
-            <h3 className="mx-auto mb-8 text-balance text-center text-lg font-medium tracking-tight text-foreground/80">
-            Nous proposons des services variés en finance, immobilier, nettoyage, commerce général et transport, incluant conseil, accompagnement, gestion de biens, location, import-export, et solutions logistiques.
-            </h3>
+                <h3 className="mx-auto mb-8  text-center text-lg  font-medium tracking-wider  text-foreground/80">
+                Nous proposons des services variés en Finance, Immobilier, Commerce général et Transport</h3>
 
             <ServicesCarousel />
         </section>

@@ -3,20 +3,28 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "LemonMilk";
-  src: url("/fonts/lemon_milk/LEMONMILK-Regular.otf") format("opentype");
+  font-family: "Book-Antiqua";
+  src: url("/fonts/book antiqua/Book-Antiqua") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "LemonMilk";
-  src: url("/fonts/lemon_milk/LEMONMILK-RegularItalic.otf") format("opentype");
+  font-family: "inter";
+  src: url("/fonts/book antiqua/Book-Antiqua") format("truetype");
   font-weight: 400;
   font-style: italic;
 }
 
+
 @font-face {
+  font-family: "inter";
+  src: url("/fonts/book antiqua/Book-Antiqua") format("truetype");
+  font-weight: 400;
+  font-style: bold;
+}
+
+/* @font-face {
   font-family: "LemonMilk";
   src: url("/fonts/lemon_milk/LEMONMILK-Bold.otf") format("opentype");
   font-weight: 700;
@@ -65,7 +73,7 @@
   src: url("/fonts/saudagar.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-}
+} */
 
 
 @layer base {
@@ -95,9 +103,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-
+    --font-book-antiqua: "Book Antiqua", Times, serif;
     /* Autres Couleurs */
-    --perspectives-marron: 25, 70%, 30%; /* Marron */
+    --perspectives-marron: 20, 69%, 33%; /* Marron */
     --perspectives-gris: 0, 0%, 30%; /* Gris */
     --perspectives-orange: 30, 100%, 50%; /* Orange */
   }
@@ -129,7 +137,7 @@
     --chart-5: 340 75% 55%;
 
     /* Autres Couleurs */
-    --perspectives-marron: 25, 70%, 30%; /* Marron */
+    --perspectives-marron: 20, 69%, 33%; /* Marron */
     --perspectives-gris: 0, 0%, 80%; /* Gris */
     --perspectives-orange: 30, 100%, 75%; /* Orange */
   }
@@ -142,6 +150,11 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-book-antiqua);
+  }
+
+  h1,h2,p,button,input{
+      font-family: var(--font-book-antiqua);
   }
 }
 

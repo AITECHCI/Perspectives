@@ -7,6 +7,8 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 import GridPattern from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import Statistiques from "../website/Statistiques/statistiques";
+import Faqs from "../Faqs/faqs";
 
 const Circle = forwardRef<
     HTMLDivElement,
@@ -129,27 +131,51 @@ export function AnimatedBeamMultipleOutputDemo({
 
 export default function Valeurs() {
     return (
-        <section className="container min-h-[300px] py-14 relative">
-            <div className="relative md:gap-8 items-center px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 lg:px-6">
-                <div className="flex flex-col justify-center">
-                    <Image 
-                        src="/images/valeur/3.jpg" 
-                        alt="Valeurs de l'entreprise" 
-                        className="max-w-full h-auto rounded-lg" 
-                        width={600} 
-                        height={400} 
-                    />
-                </div>
-                <div className="mb-4 md:mt-0">
-                <h2 className="mb-4 text-4xl tracking-tight font-bold font-saudagar text-perspectives_marron">NOS VALEURS</h2>
-                    <ul className="list-disc">
-                        <li className="mb-2 text-sm"><span className="font-semibold">Respect , </span> Discipline et Performance : les piliers de notre démarche.</li>
-                        <li className="mb-2 text-sm"><span className="font-semibold">Performance </span></li>
-                        <li className="mb-2 text-sm"><span className="font-semibold">Collaboration </span></li>
-                        <li className="mb-2 text-sm"><span className="font-semibold">Responsabilité </span></li>
-                    </ul>
-                </div>
+        <>
+   <section className="container min-h-[300px] py-14 mb-10 relative">
+    <div className="relative md:gap-8 items-center px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 lg:px-6">
+        <div className="relative  ">
+         <div className="mb-5 ml-6">
+              <h2 className="w-full text-4xl tracking-tight font-bold font-saudagar text-[#8E421C] p-2 ">
+                LES VALEURS
+            </h2>
+            <h3 className="font-normal text-xl text-[#8E421C] ml-2">QUI GUIDENT NOTRE ENTREPRISE</h3>
+         </div>
+            <Image 
+                src="/images/valeur/3.jpg" 
+                alt="Valeurs de l'entreprise" 
+                className="max-w-full h-auto rounded-lg" 
+                width={600} 
+                height={400} 
+            />
+          
+        </div>
+        <div className="mb-4 md:mt-0">
+            <div className="bg-gray-200 p-10 h-full rounded-lg">
+                <ul className="space-y-2">
+                    <li className="flex items-center">
+                        <span className="w-6 h-6 mr-2 bg-lime-400 rounded flex items-center justify-center">✔</span>
+                        <span className="font-semibold">Respect</span>
+                    </li>
+                    <li className="flex items-center">
+                        <span className="w-6 h-6 mr-2 bg-lime-400 rounded flex items-center justify-center">✔</span>
+                        <span className="font-semibold">Discipline</span>
+                    </li>
+                    <li className="flex items-center">
+                        <span className="w-6 h-6 mr-2 bg-lime-400 rounded flex items-center justify-center">✔</span>
+                        <span className="font-semibold">Performance</span>
+                    </li>
+                 
+                </ul>
+                <p className="mt-4">
+                    <span className="font-semibold">Respect, Discipline et Performance :</span> les piliers de notre démarche.
+                </p>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+             <Statistiques />
+              <Faqs />
+        </>
     );
 }

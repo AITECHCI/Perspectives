@@ -31,9 +31,6 @@ export default function Sidebar() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <div className="md:hidden">
-        <Icons.logo_rogner className="mr-2 w-20" />
-      </div>
       <SheetContent side="left" className="px-2">
         <SheetHeader>
           <div className="md:hidden">

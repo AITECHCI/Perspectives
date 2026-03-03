@@ -17,16 +17,16 @@ export default function Statistiques() {
             <div className="bg-perspectives_marron ring-novis_yellow ring-1 aspect-square h-10 md:h-12 flex justify-center items-center">
               <Icons.building className="text-white size-8 md:size-10" />
             </div>
-            <p className="font-medium text-3xl md:text-4xl font-mono whitespace-pre-wrap tracking-tighter "><NumberTicker value={13} /></p>
-            <p className="font-medium">Espaces de travail</p>
+            <p className="font-medium text-3xl md:text-4xl font-mono whitespace-pre-wrap tracking-tighter "><NumberTicker value={750} /></p>
+            <p className="font-medium">Marchandises livrées</p>
           </div>
 
           <div className=" flex flex-col gap-2 md:gap-4 items-center">
             <div className="bg-perspectives_marron ring-novis_yellow ring-1 aspect-square h-10 md:h-12 flex justify-center items-center">
               <Icons.space className="text-white size-8 md:size-10" />
             </div>
-            <p className="font-medium text-3xl md:text-4xl font-mono whitespace-pre-wrap tracking-tighter "><NumberTicker value={230} /> m²</p>
-            <p className="font-medium">De bureaux</p>
+            <p className="font-medium text-3xl md:text-4xl font-mono whitespace-pre-wrap tracking-tighter "><NumberTicker value={230} /></p>
+            <p className="font-medium">Appareils électroménagers vendus</p>
           </div>
 
           <div className=" flex flex-col gap-2 md:gap-4 items-center">
@@ -34,7 +34,7 @@ export default function Statistiques() {
               <Icons.contact className="text-white size-8 md:size-10" />
             </div>
             <p className="font-medium text-3xl md:text-4xl font-mono whitespace-pre-wrap tracking-tighter "><NumberTicker value={150} /></p>
-            <p className="font-medium">Clients</p>
+            <p className="font-medium">Clients satisfaits</p>
           </div>
 
           <div className=" flex flex-col gap-2 md:gap-4 items-center">
@@ -48,16 +48,7 @@ export default function Statistiques() {
 
         </div>
       </div>
-      <AnimatedGridPattern
-        numSquares={100}
-        maxOpacity={0.1}
-        duration={2}
-        repeatDelay={1}
-        className={cn(
-          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-30%] h-[150%]",
-        )}
-      />
+  
     </section>
   );
 }

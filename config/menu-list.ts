@@ -48,10 +48,10 @@ export function getMenuList(pathname: string): Group[] {
       icon: Icons.library,
       submenus: [
         { href: "", label: "", active: pathname === "" },
-        { href: "/services/finance", label: "Finance", active: pathname === "/services/finance" },
-        { href: "/services/patrimoine_financier", label: "Immobilier - logistique", active: pathname === "/services/patrimoine_financier" },
-        { href: "/services/immobilier", label: "Transit –transport", active: pathname === "/services/immobilier" },
-        { href: "/services/transport", label: "Commerce général", active: pathname === "/services/transport" },
+        { href: "/our_spaces", label: "Finance", active: pathname === "/our_spaces" },
+        { href: "/our_spaces/private_offices", label: "Immobilier", active: pathname === "/our_spaces/private_offices" },
+        { href: "/private_offices", label: "Transit-Transport", active: pathname === "/private_offices" },
+        { href: "/our_commerce", label: "Commerce général", active: pathname === "/our_commerce" },
       ]
     },
     {
@@ -60,13 +60,12 @@ export function getMenuList(pathname: string): Group[] {
       label: "Ressources",
       icon: Icons.library,
       submenus: [
-        { href: "/resources/documents", label: "Documents à Télécharger", active: pathname === "/resources/documents" },
-        { href: "/resources/faq", label: "FAQ", active: pathname === "/resources/faq" },
+        { href: "/ressources", label: "Documents à Télécharger", active: pathname === "/ressources" },
       ]
     },
     {
       groupLabel: "Actualités",
-      href: "/news",
+      href: "",
       label: "Actualités",
       icon: Icons.calendar,
       submenus: []
